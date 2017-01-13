@@ -1,31 +1,19 @@
 <template>
   <div id="app">
-    <winter></winter>
+    <resume></resume>
   </div>
 </template>
 
 <script>
 import Winter from './components/Winter'
+import Resume from './components/Resume'
 
 export default {
   name: 'app',
   components: {
-    Winter
+    Winter,
+    Resume
   }
 }
 </script>
 
-<style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-  img {
-    height: auto;
-    width: auto;
-  }
-}
-</style>

@@ -2,22 +2,22 @@
   #resume-main
     .resume-tab-wrap
       ul.resume-tab-menu
-        li.active
-          a(href='##',data-tab='1')
-            span.icon.icon-glass
-            span.menu-text Profile
         li
+          a(href='##',data-tab='1')
+            span.iconfont.icon-bussinessman
+            span.menu-text 个人简介
+        li.active
           a(href='##',data-tab='2')
-            span.icon.icon-glass
-            span.menu-text Education
+            span.iconfont.icon-office
+            span.menu-text 校内经历
         li
           a(href='##',data-tab='3')
-            span.icon.icon-glass
-            span.menu-text Experience
+            span.iconfont.icon-form
+            span.menu-text 工作经历
         li
           a(href='##',data-tab='4')
-            span.icon.icon-glass
-            span.menu-text Skills
+            span.iconfont.icon-lights
+            span.menu-text 掌握技能
       .resume-tab-content.active(data-content='1')
         .resume-content-inner
           figure
@@ -32,16 +32,39 @@
               td 专业：数字媒体技术
             tr
               td 邮箱：604113530@qq.com
-              td(style='padding-right:20px') 职业：前端工程师
+              td.pr-size 职业：前端工程师
           p {{intro}}
           p {{hobby}}
+      .resume-tab-content(data-content='2')
+        .resume-content-inner
+          p.ta-c 本科专业课程（数字媒体技术）及社团实践中掌握了的知识
+          .resume-feature
+            .resume-icon
+              i.iconfont.icon-training
+            .resume-text
+              h2 2012-2013
+              p 熟悉素描，色彩原理，了解物体透视原理，色彩构成原理。掌握软件Ps的基本工具操作。
+          .resume-feature
+            .resume-icon
+              i.iconfont.icon-imagetext
+            .resume-text
+              h2 2013-2014
+              p 担任校学生新闻中心数媒部部长，掌握包括Ps，Ae，Pr等相关设计及视频制作软件。参与校刊《广东工业大学报》、《工大学子》的排版设计。
+          .resume-feature
+            .resume-icon
+              i.icon-graduation-cap
+            .resume-text
+              h2 2014-2015
+              p
 </template>
 <style lang="less">
   body{
     background: #fff;
   }
+
+  @import "//at.alicdn.com/t/font_4w5wlo8gsibmlsor.css";
   @import "../assets/less/resume.less";
-  #resume-main{height:1000px}
+  /*#resume-main{height:1000px}*/
 </style>
 <script>
   export default{
@@ -56,9 +79,6 @@
               '熟练Ps，Ai等设计软件的使用。',
         hobby:'喜欢各类体育运动，喜欢旅游，喜欢摄影，喜欢电影，喜欢音乐，喜欢K歌，吃货。'
       }
-    },
-    components:{
-
     }
   }
 </script>

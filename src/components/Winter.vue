@@ -13,13 +13,14 @@
     .moon-wrapper.layer(data-depth="0.30")
       .moon
     .title-wrapper.layer(data-depth="0.40")
-      h1.title(data-title="Fly me to the moon") Fly me to the moon
+      resume
 </template>
 <style lang="less">
   @import "../assets/less/winter.less";
   @import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css";
 </style>
 <script>
+  import Resume from './Resume'
   import $ from 'jquery'
   require("imports?$=jquery!../assets/js/jquery.parallax.js")
   $(function() {
@@ -36,11 +37,14 @@
   });
 
     export default{
-        name:'Winter',
-        data(){
-            return{
-                msg:'hello vue'
-            }
+      name:'Winter',
+      data(){
+        return{
+          msg:'hello vue'
         }
+      },
+      components:{
+        Resume
+      }
     }
 </script>

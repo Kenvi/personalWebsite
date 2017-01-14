@@ -1,11 +1,11 @@
 @font-primary: 'Source Sans Pro', Arial, sans-serif;
-
+@size: 16px;
 // Overrides
 @grid-gutter-width: 40px;
 @border-radius-base:  4px;
 @padding-base-vertical: 14px;
 
-@brand-primary: #bdc3d0;
+@brand-primary: #bcd1ff;
 @brand-secondary: #3f95ea;
 
 
@@ -93,23 +93,24 @@ h1, h2, h3, h4, h5, h6 {
 #resume-main{
   font-family: @font-primary;
   font-weight: 300;
-  font-size: 20px;
+  font-size: @size;
   line-height: 1.5;
   color: #7f7f7f;
   color: rgba(255,255,255,.7);
   background: @brand-bg-color;
   height: 100%;
-  position: relative;
+  position: absolute;
 
   background-size: cover;
   background-attachment: fixed;
   background-repeat: no-repeat;
 
-  max-width: 760px;
-  min-height: 600px;
-  margin: 5em auto ;
+  width: 600px;
+  height: 600px;
+  margin-top: 10em ;
+  left: 50%;
   position: relative;
-  background: rgba(0,0,0,.6);
+  background: rgba(0,0,0,.2);
   overflow: hidden;
   ._border-radius(7px);
   ._transition(0.5s);
@@ -137,10 +138,10 @@ h1, h2, h3, h4, h5, h6 {
         z-index: 10;
         ._inline-block();
         ._transition(.3s);
-        .icon {
+        .iconfont {
           display: block;
           position: relative;
-          font-size: 22px;
+          font-size: 25px;
           bottom: 0;
           ._transition(.3s);
         }
@@ -192,8 +193,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .resume-tab-content {
-    padding-left: 4em;
-    padding-right: 4em;
+    padding:0 2em;
     position: absolute;
     top: 0;
     opacity: 0;
@@ -204,86 +204,43 @@ h1, h2, h3, h4, h5, h6 {
       visibility: visible;
     }
     .resume-content-inner {
-      padding: 7em 2em 5em 2em;
+      padding: 7em 0 5em 0;
       float: left;
       width: 100%;
       position: relative;
       text-align: center;
       table{
         width: 100%;
+        font-size: 18px;
+        margin: -90px 0 40px 0;
         text-align: left;
         td{
           width: 50%;
           &:last-child{
             text-align: right;
           }
+          &.pr-size{
+            padding-right: 18px;
+          }
         }
       }
       p{
         text-align: justify;
+        &.ta-c{
+          text-align: center;
+        }
+      }
+      h1{
+        font-size: 30px;
+        margin: -10px 0 0 0;
+        opacity: 0.5;
       }
     }
   }
 }
 figure {
-  margin-bottom: 1.5em;
-}
-
-.resume-counter {
-  .resume-number {
-    font-size: 100px;
-    color: @brand-primary;
-    font-weight: 400;
-    margin: 0;
-    padding: 0;
-    line-height: .7;
-    &.resume-left {
-      float: left;
-      width: 30%;
-    }
-  }
-  .resume-text {
-    float: right;
-    text-align: left;
-    width: 70%;
-    h3 {
-      margin: 0;
-      padding: 0;
-      position: relative;
-      &.border-bottom {
-        &:after {
-          content: "";
-          width: 50px;
-        }
-      }
-    }
-  }
-}
-
-.resume-social {
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  li {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    ._inline-block();
-    a {
-      font-size: 22px;
-      color: @brand-white;
-      padding: 10px 20px;
-      ._inline-block();
-      ._border-radius(7px);
-      &:hover {
-        color: @brand-primary;
-      }
-      &:hover, &:active, &:focus {
-        outline: none;
-        text-decoration: none;
-      }
-    }
-  }
+  margin-bottom: 10px;
+  opacity: 0.5;
 }
 
 
@@ -319,6 +276,9 @@ figure {
       letter-spacing: 2px;
       font-weight: bold;
       text-transform: uppercase;
+    }
+    p{
+      margin-top: 0;
     }
   }
 }

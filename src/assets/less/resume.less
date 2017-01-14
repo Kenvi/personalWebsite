@@ -5,7 +5,7 @@
 @border-radius-base:  4px;
 @padding-base-vertical: 14px;
 
-@brand-primary: #17e7a4;
+@brand-primary: #bdc3d0;
 @brand-secondary: #3f95ea;
 
 
@@ -48,6 +48,12 @@
   -webkit-transition: all @transition ease;
   -ms-transition: 		all @transition ease;
   transition:         all @transition ease;
+}
+
+*{
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 a {
@@ -103,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 600px;
   margin: 5em auto ;
   position: relative;
-  background: rgba(0,0,0,.85);
+  background: rgba(0,0,0,.6);
   overflow: hidden;
   ._border-radius(7px);
   ._transition(0.5s);
@@ -202,6 +208,20 @@ h1, h2, h3, h4, h5, h6 {
       float: left;
       width: 100%;
       position: relative;
+      text-align: center;
+      table{
+        width: 100%;
+        text-align: left;
+        td{
+          width: 50%;
+          &:last-child{
+            text-align: right;
+          }
+        }
+      }
+      p{
+        text-align: justify;
+      }
     }
   }
 }
@@ -209,20 +229,20 @@ figure {
   margin-bottom: 1.5em;
 }
 
-.fh5co-counter {
-  .fh5co-number {
+.resume-counter {
+  .resume-number {
     font-size: 100px;
     color: @brand-primary;
     font-weight: 400;
     margin: 0;
     padding: 0;
     line-height: .7;
-    &.fh5co-left {
+    &.resume-left {
       float: left;
       width: 30%;
     }
   }
-  .fh5co-text {
+  .resume-text {
     float: right;
     text-align: left;
     width: 70%;
@@ -240,7 +260,7 @@ figure {
   }
 }
 
-.fh5co-social {
+.resume-social {
   padding: 0;
   margin: 0;
   text-align: center;
@@ -252,7 +272,6 @@ figure {
     a {
       font-size: 22px;
       color: @brand-white;
-      // background: $brand-primary;
       padding: 10px 20px;
       ._inline-block();
       ._border-radius(7px);
@@ -268,11 +287,11 @@ figure {
 }
 
 
-.fh5co-feature {
+.resume-feature {
   text-align: left;
   width: 100%;
   float: left;
-  .fh5co-icon {
+  .resume-icon {
     float: left;
     width: 10%;
     display: block;
@@ -282,7 +301,7 @@ figure {
       font-size: 40px;
     }
   }
-  .fh5co-text {
+  .resume-text {
     float: right;
     width: 82%;
     h2, h3 {

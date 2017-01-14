@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <resume></resume>
+    <!--<winter></winter>-->
   </div>
 </template>
 

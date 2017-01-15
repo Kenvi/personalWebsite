@@ -195,16 +195,24 @@ h1, h2, h3, h4, h5, h6 {
   .resume-tab-content {
     padding:0 2em;
     position: absolute;
-    top: 0;
+    top: 110px;
     opacity: 0;
     visibility: hidden;
     width: 100%;
+    height: 500px;
     &.active {
       opacity: 1;
       visibility: visible;
     }
+    overflow-x: hidden;
+    overflow-y: scroll;
+    &::-webkit-scrollbar{
+      width: 6px;
+      height: 6px;
+      opacity: 0.5;
+    }
     .resume-content-inner {
-      padding: 7em 0 5em 0;
+      padding: 0 0 5em 0;
       float: left;
       width: 100%;
       position: relative;
@@ -256,6 +264,12 @@ figure {
     i {
       color: @brand-primary;
       font-size: 40px;
+      &.icon-news{
+        font-size: 30px;
+      }
+      &.icon-weixin{
+        font-size: 35px;
+      }
     }
   }
   .resume-text {

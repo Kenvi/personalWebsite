@@ -12,13 +12,13 @@
             span.menu-text 校内经历
         li
           a(href='##',data-tab='3')
-            span.iconfont.icon-form
+            span.iconfont.icon-history
             span.menu-text 工作经历
         li
           a(href='##',data-tab='4')
             span.iconfont.icon-lights
             span.menu-text 掌握技能
-      .resume-tab-content.active(data-content='1')
+      .resume-tab-content(data-content='1')
         .resume-content-inner
           figure
             img(src='../assets/images/portrait.png',width='140px',alt='portrait')
@@ -34,37 +34,44 @@
               td 邮箱：604113530@qq.com
               td.pr-size 职业：前端工程师
           p {{intro}}
-          p {{hobby}}
-      .resume-tab-content(data-content='2')
+          p 喜欢各类体育运动，喜欢旅游，喜欢摄影，喜欢电影，喜欢音乐，喜欢K歌，吃货。
+      .resume-tab-content.active(data-content='2')
         .resume-content-inner
           p.ta-c 本科专业课程（数字媒体技术）及社团实践中掌握了的知识
           .resume-feature
             .resume-icon
-              i.iconfont.icon-training
+              i.iconfont.icon-Ps
             .resume-text
               h2 2012-2013
               p 熟悉素描，色彩原理，了解物体透视原理，色彩构成原理。掌握软件Ps的基本工具操作。
           .resume-feature
             .resume-icon
-              i.iconfont.icon-imagetext
+              i.iconfont.icon-news
             .resume-text
               h2 2013-2014
               p 担任校学生新闻中心数媒部部长，掌握包括Ps，Ae，Pr等相关设计及视频制作软件。参与校刊《广东工业大学报》、《工大学子》的排版设计。
           .resume-feature
             .resume-icon
-              i.icon-graduation-cap
+              i.iconfont.icon-js
             .resume-text
               h2 2014-2015
-              p
+              p 正式开始前端之路，熟练掌握html+css静态页面构建，了解html5及css3新特性，掌握各浏览器兼容问题，熟练使用jQuery对页面进行dom操作。
+          .resume-feature
+            .resume-icon
+              i.iconfont.icon-weixin
+            .resume-text
+              h2 2015-2016
+              p 熟悉微信公众号开发，熟练掌握微信js-sdk的使用。熟练掌握bootstrap，熟练掌握less等css预处理技术。熟悉mvc开发模式，了解网站后台及数据库工作原理。熟练svn，git等代码管理工具。
+          .resume-feature
+            .resume-icon
+              i.iconfont.icon-node
+            .resume-text
+              h2 2016-2016.9
+              p 熟悉node.js，熟悉微信公众平台接口调用，熟悉mongoDB。了解ES6，前端自动化构建，前端模块化思想。了解前端mvvm开发模式，掌握vue.js+webpack+vue-router开发SPA。
 </template>
 <style lang="less">
-  body{
-    background: #fff;
-  }
-
-  @import "//at.alicdn.com/t/font_4w5wlo8gsibmlsor.css";
+  @import "//at.alicdn.com/t/font_13h4f0kd25xnipb9.css";
   @import "../assets/less/resume.less";
-  /*#resume-main{height:1000px}*/
 </style>
 <script>
   export default{
@@ -76,8 +83,7 @@
               '曾使用node.js+express+mongoDB独立开发某绿化公司宣传网站；' +
               '有微信公众号开发经验（对微信公众平台接口调用亦有所了解）。' +
               '熟练mv*开发模式（有vue.js开发经验），熟悉前端管理方案（了解gulp及webpack），熟悉node.js。' +
-              '熟练Ps，Ai等设计软件的使用。',
-        hobby:'喜欢各类体育运动，喜欢旅游，喜欢摄影，喜欢电影，喜欢音乐，喜欢K歌，吃货。'
+              '熟练Ps，Ai等设计软件的使用。'
       }
     }
   }

@@ -2,7 +2,7 @@
   #resume-main
     .resume-tab-wrap
       ul.resume-tab-menu
-        li
+        li.active
           a(href='##',data-tab='1')
             span.iconfont.icon-bussinessman
             span.menu-text 个人简介
@@ -10,7 +10,7 @@
           a(href='##',data-tab='2')
             span.iconfont.icon-office
             span.menu-text 校内经历
-        li.active
+        li
           a(href='##',data-tab='3')
             span.iconfont.icon-history
             span.menu-text 工作经历
@@ -18,7 +18,7 @@
           a(href='##',data-tab='4',data-pie="yes")
             span.iconfont.icon-lights
             span.menu-text 掌握技能
-      .resume-tab-content(data-content='1')
+      .resume-tab-content.active(data-content='1')
         .resume-content-inner
           figure
             img(src='../assets/images/portrait.png',width='140px',alt='portrait')
@@ -103,15 +103,15 @@
               h2 2016.10-2016.12
               p 负责公司新项目“聚焦分享”的pc端页面(包括内容编辑，数据处理)开发及维护工作。
                 a(href='http://share.mofor.cn/',target='_blank') (http://share.mofor.cn/)
-      .resume-tab-content.active(data-content='4')
+      .resume-tab-content(data-content='4')
         .resume-content-inner
           p.ta-c 掌握技能
           .row
-            .item(v-for='n in 16')
-              .chart(data-percent="95")
+            .item(v-for='skill in skills')
+              .chart(:data-percent="skill.rate")
                 span
-                  strong HTML5
-                  i 95%
+                  strong {{skill.name}}
+                  i {{skill.rate}}%
                 canvas(height='150',width='150',style='width:130px;height:130px;')
 </template>
 <style lang="less">
@@ -122,70 +122,6 @@
   import $ from 'jquery'
   require("imports?$=jquery!../assets/js/jquery.easypiechart.min.js")
 
-  var getHeight = function() {
-    var extraHeight = 0;
-
-
-    setTimeout(function(){
-      $('#resume-main').stop().animate({
-        'height': $('.resume-tab-content.active').height() + extraHeight
-      });
-    }, 200);
-  };
-
-  var pieChart = function() {
-    $('.chart').easyPieChart({
-      scaleColor: false,
-      lineWidth: 5,
-      lineCap: 'butt',
-      barColor: '#bcd1ff',
-      trackColor:	"#000000",
-      size: 100,
-      animate: 1000
-    });
-  };
-
-  var tabContainer = function() {
-    getHeight();
-    $(window).resize(function(){
-      getHeight();
-    })
-  };
-
-  var tabClickTrigger = function() {
-    $('.resume-tab-menu a').on('click', function(event) {
-      event.preventDefault();
-      var $this = $(this),
-        data = $this.data('tab'),
-        pie = $this.data('pie');
-
-      // add/remove active class
-      $('.resume-tab-menu li').removeClass('active');
-      $this.closest('li').addClass('active');
-
-      $('.resume-tab-content.active').addClass('animated fadeOutDown');
-
-      setTimeout(function(){
-        $('.resume-tab-content.active').removeClass('active animated fadeOutDown fadeInUp');
-        $('.resume-tab-content[data-content="'+data+'"]').addClass('animated fadeInUp active');
-        getHeight();
-      }, 500);
-
-      if ( pie === 'yes' ) {
-        setTimeout(function(){
-          pieChart();
-        }, 800);
-      }
-
-    })
-  };
-
-  // Document on load.
-  $(function(){
-    tabContainer();
-    tabClickTrigger();
-
-  });
   export default{
     name:'Resume',
     data(){
@@ -195,7 +131,88 @@
               '曾使用node.js+express+mongoDB独立开发某绿化公司宣传网站；' +
               '有微信公众号开发经验（对微信公众平台接口调用亦有所了解）。' +
               '熟练mv*开发模式（有vue.js开发经验），熟悉前端管理方案（了解gulp及webpack），熟悉node.js。' +
-              '熟练Ps，Ai等设计软件的使用。'
+              '熟练Ps，Ai等设计软件的使用。',
+        skills:[
+          {name:'Html(5)',rate:'90'},
+          {name:'Css(3)',rate:'90'},
+          {name:'Less',rate:'85'},
+          {name:'Bootstrap',rate:'85'},
+          {name:'jQuery',rate:'90'},
+          {name:'Photoshop',rate:'90'},
+          {name:'Illustrator',rate:'80'},
+          {name:'Sublime',rate:'90'},
+          {name:'Webstorm',rate:'85'},
+          {name:'Git',rate:'85'},
+          {name:'Node',rate:'60'},
+          {name:'React',rate:'60'},
+          {name:'Vue',rate:'80'},
+          {name:'Grunt',rate:'60'},
+          {name:'Gulp',rate:'65'},
+          {name:'Webpack',rate:'65'}
+        ]
+      }
+    },
+    mounted:function () {
+      this.getHeight();
+      this.tabContainer();
+      this.tabClickTrigger();
+    },
+    methods:{
+      getHeight:function () {
+        var extraHeight = 0;
+        $('#resume-main').css('margin-top',-$('.resume-tab-content.active').height()/2 )
+        setTimeout(function(){
+          $('#resume-main').stop().animate({
+            'height': $('.resume-tab-content.active').height() + extraHeight,
+          });
+        }, 200);
+      },
+      pieChart : function() {
+        $('.chart').easyPieChart({
+          scaleColor: false,
+          lineWidth: 5,
+          lineCap: 'butt',
+          barColor: '#bcd1ff',
+          trackColor:	"#000000",
+          size: 120,
+          animate: 1000
+        });
+      },
+      tabContainer : function() {
+        var self = this
+        self.getHeight();
+        $(window).resize(function(){
+          self.getHeight();
+        })
+      },
+
+      tabClickTrigger: function() {
+        var self = this
+        $('.resume-tab-menu a').on('click', function(event) {
+          event.preventDefault();
+          var $this = $(this),
+            data = $this.data('tab'),
+            pie = $this.data('pie');
+
+          // add/remove active class
+          $('.resume-tab-menu li').removeClass('active');
+          $this.closest('li').addClass('active');
+
+          $('.resume-tab-content.active').addClass('animated fadeOutDown');
+
+          setTimeout(function(){
+            $('.resume-tab-content.active').removeClass('active animated fadeOutDown fadeInUp');
+            $('.resume-tab-content[data-content="'+data+'"]').addClass('animated fadeInUp active');
+            self.getHeight();
+          }, 500);
+
+          if ( pie === 'yes' ) {
+            setTimeout(function(){
+              self.pieChart();
+            }, 800);
+          }
+
+        })
       }
     }
   }

@@ -15,7 +15,7 @@
             span.iconfont.icon-history
             span.menu-text 工作经历
         li
-          a(href='##',data-tab='4')
+          a(href='##',data-tab='4',data-pie="yes")
             span.iconfont.icon-lights
             span.menu-text 掌握技能
       .resume-tab-content(data-content='1')
@@ -68,7 +68,7 @@
             .resume-text
               h2 2016-2016.9
               p 熟悉node.js，熟悉微信公众平台接口调用，熟悉mongoDB。了解ES6，前端自动化构建，前端模块化思想。了解前端mvvm开发模式，掌握vue.js+webpack+vue-router开发SPA。
-      .resume-tab-content.active(data-content='3')
+      .resume-tab-content(data-content='3')
         .resume-content-inner
           p.ta-c 项目及工作经历
           .resume-feature
@@ -103,12 +103,89 @@
               h2 2016.10-2016.12
               p 负责公司新项目“聚焦分享”的pc端页面(包括内容编辑，数据处理)开发及维护工作。
                 a(href='http://share.mofor.cn/',target='_blank') (http://share.mofor.cn/)
+      .resume-tab-content.active(data-content='4')
+        .resume-content-inner
+          p.ta-c 掌握技能
+          .row
+            .item(v-for='n in 16')
+              .chart(data-percent="95")
+                span
+                  strong HTML5
+                  i 95%
+                canvas(height='150',width='150',style='width:130px;height:130px;')
 </template>
 <style lang="less">
   @import "//at.alicdn.com/t/font_13h4f0kd25xnipb9.css";
   @import "../assets/less/resume.less";
 </style>
 <script>
+  import $ from 'jquery'
+  require("imports?$=jquery!../assets/js/jquery.easypiechart.min.js")
+
+  var getHeight = function() {
+    var extraHeight = 0;
+
+
+    setTimeout(function(){
+      $('#resume-main').stop().animate({
+        'height': $('.resume-tab-content.active').height() + extraHeight
+      });
+    }, 200);
+  };
+
+  var pieChart = function() {
+    $('.chart').easyPieChart({
+      scaleColor: false,
+      lineWidth: 5,
+      lineCap: 'butt',
+      barColor: '#bcd1ff',
+      trackColor:	"#000000",
+      size: 100,
+      animate: 1000
+    });
+  };
+
+  var tabContainer = function() {
+    getHeight();
+    $(window).resize(function(){
+      getHeight();
+    })
+  };
+
+  var tabClickTrigger = function() {
+    $('.resume-tab-menu a').on('click', function(event) {
+      event.preventDefault();
+      var $this = $(this),
+        data = $this.data('tab'),
+        pie = $this.data('pie');
+
+      // add/remove active class
+      $('.resume-tab-menu li').removeClass('active');
+      $this.closest('li').addClass('active');
+
+      $('.resume-tab-content.active').addClass('animated fadeOutDown');
+
+      setTimeout(function(){
+        $('.resume-tab-content.active').removeClass('active animated fadeOutDown fadeInUp');
+        $('.resume-tab-content[data-content="'+data+'"]').addClass('animated fadeInUp active');
+        getHeight();
+      }, 500);
+
+      if ( pie === 'yes' ) {
+        setTimeout(function(){
+          pieChart();
+        }, 800);
+      }
+
+    })
+  };
+
+  // Document on load.
+  $(function(){
+    tabContainer();
+    tabClickTrigger();
+
+  });
   export default{
     name:'Resume',
     data(){

@@ -130,7 +130,7 @@ h1, h2, h3, h4, h5, h6 {
       ._inline-block();
       text-align: center;
       padding: 0;
-      margin: 0;
+      margin: 0 5px 0 0;
       a {
         padding: 2em 1em 1em 1em;
         position: relative;
@@ -195,11 +195,11 @@ h1, h2, h3, h4, h5, h6 {
   .resume-tab-content {
     padding:0 2em;
     position: absolute;
-    top: 110px;
+    top: 0;
     opacity: 0;
     visibility: hidden;
     width: 100%;
-    height: 500px;
+    //height: 500px;
     &.active {
       opacity: 1;
       visibility: visible;
@@ -212,7 +212,7 @@ h1, h2, h3, h4, h5, h6 {
       opacity: 0.5;
     }
     .resume-content-inner {
-      padding: 0 0 5em 0;
+      padding: 7em 0 0 0;
       float: left;
       width: 100%;
       position: relative;
@@ -297,13 +297,20 @@ figure {
   }
 }
 
+.row{
+  margin: 0 -15px;
+  .item{
+    width: 25%;
+    float: left;
+  }
+}
 
 // Chart
 
 .chart {
-  width: 160px;
-  height: 160px;
-  margin: 0 auto 30px auto;
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 15px auto;
   position: relative;
   text-align: center;
   span {
@@ -313,7 +320,7 @@ figure {
     position: absolute;
     top: 50%;
     left: 0;
-    margin-top: -30px;
+    margin-top: -25px;
     width: 100%;
   }
   canvas{
@@ -321,4 +328,49 @@ figure {
     left: 0;
     top: 0;
   }
+}
+
+//animate
+@-webkit-keyframes fadeInUp {
+  from {
+    opacity: 0;
+    /*-webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);*/
+    -webkit-transform: translate3d(0, 40px, 0);
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    /*-webkit-transform: translate3d(0, 100%, 0);
+    transform: translate3d(0, 100%, 0);*/
+    -webkit-transform: translate3d(0, 40px, 0);
+    transform: translate3d(0, 40px, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
 }

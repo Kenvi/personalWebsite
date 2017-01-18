@@ -1,14 +1,9 @@
 @font-primary: 'Source Sans Pro', Arial, sans-serif;
 @size: 16px;
-// Overrides
-@grid-gutter-width: 40px;
-@border-radius-base:  4px;
-@padding-base-vertical: 14px;
+
 
 @brand-primary: #bcd1ff;
 @brand-secondary: #3f95ea;
-
-
 
 @brand-white: #fff;
 @brand-black: #000;
@@ -37,11 +32,7 @@
   zoom:1;
   *display:inline;
 }
-._flexwrap() {
-  flex-wrap: wrap;
-  -webkit-flex-wrap: wrap;
-  -moz-flex-wrap: wrap;
-}
+
 ._transition(@transition) {
   -moz-transition:    all @transition ease;
   -o-transition:      all @transition ease;
@@ -95,15 +86,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
   font-size: @size;
   line-height: 1.5;
-  color: #7f7f7f;
   color: rgba(255,255,255,.7);
-  background: @brand-bg-color;
-  height: 100%;
-
-  background-size: cover;
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-
   width: 600px;
   height: 600px;
   top:50%;
@@ -120,7 +103,6 @@ h1, h2, h3, h4, h5, h6 {
   .resume-tab-menu{
     list-style: none;
     text-align: center;
-    margin-bottom: 2em;
     position: relative;
     top: -.5em;
     padding: 0;

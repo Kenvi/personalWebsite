@@ -18,26 +18,32 @@
 <style lang="less">
   @import "../assets/less/winter.less";
   @import "https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css";
+  #scene{
+    opacity: 0;
+  }
 </style>
 <script>
   import Resume from './Resume'
   import $ from 'jquery'
   require("imports?$=jquery!../assets/js/jquery.parallax.js")
-  $(function() {
-    $('#scene').parallax({
-      calibrateX: true,
-      calibrateY: true,
-      scalarX: 12,
-      scalarY: 12,
-      frictionX: 0.1,
-      frictionY: 0.1,
-      originX: 0.5,
-      originY: 0.5
-    });
-  });
 
     export default{
       name:'Winter',
+      mounted:function () {
+        $(function() {
+          $('#scene').parallax({
+            calibrateX: true,
+            calibrateY: true,
+            scalarX: 12,
+            scalarY: 12,
+            frictionX: 0.1,
+            frictionY: 0.1,
+            originX: 0.5,
+            originY: 0.5
+          })
+          .css('opacity','1')
+        });
+      },
       data(){
         return{
           msg:'hello vue'
